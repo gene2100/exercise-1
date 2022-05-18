@@ -1,0 +1,20 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Firstname</th>
+      <th scope="col">Lastname</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Submitted channel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contract of contractList; let i = index">
+      <th scope="col">{{i}}</th>
+      <th scope="col">{{contract.firstname}}</th>
+      <th scope="col">{{contract.lastname}}</th>
+      <th scope="col">{{contract.gender}}</th>
+      <th scope="col">{{contract.submitChannel}}</th>
+    </tr>
+  </tbody>
+</table>

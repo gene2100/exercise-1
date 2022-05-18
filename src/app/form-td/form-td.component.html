@@ -1,0 +1,69 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title text-center">Contract information</h4>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="row">
+      <div class="col-xs-12 pt-4 form-group">
+        <label for="firstname">Firstname</label>
+        <input type="text" id="firstname" class="form-control" ngModel required #firstname="ngModel" name="firstname" [disabled]="isSubmit"/>
+        <p *ngIf="!firstname.valid && trySubmit  && !firstname.disabled" class="warning">Please enter firstname</p>
+      </div>
+      <div class="col-xs-12 pt-4 form-group">
+        <label for="lastname">Lastname</label>
+        <input type="text" id="lastname" class="form-control" ngModel required #lastname="ngModel" name="lastname" [disabled]="isSubmit"/>
+        <p *ngIf="!lastname.valid && trySubmit && !lastname.disabled" class="warning">Please enter lastname</p>
+      </div>
+      <div class="col-xs-12 pt-4 form-group">
+        <label for="gender">Gender</label>
+      </div>
+      <div class="col-xs-12 pt-2 form-group">
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="gender"
+            id="gender"
+            value="Male"
+            required
+            ngModel
+            #gender ="ngModel"
+            [disabled]="isSubmit"
+          />Male
+        </label>
+        <label class="form-check-label">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="gender"
+            id="gender"
+            value="Female"
+            required
+            ngModel
+            #gender ="ngModel"
+          />Female
+        </label>
+        <p *ngIf="!gender.valid && trySubmit && !gender.disabled" class="warning">Please enter gender</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-center">
+        <button *ngIf="isSubmit" class="btn btn-primary" style="width: 150px" type="button" (click)="onClear()">New</button>
+        <button *ngIf="!isSubmit"class="btn btn-danger" style="width: 150px" type="button" (click)="onClear()">Clear</button>
+        <button class="btn btn-success" style="width: 150px" type="submit" [disabled]="isSubmit">Save</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+<div *ngIf="isSubmit" class="card w-50 mx-auto mb-4" style="backgroundColor:rgba(228, 149, 53, 0.184)">
+  <div class="card-body">
+    <h5 class="card-title text-center">Your submitted contract information</h5>
+    <div class="row">
+      <div class="col-xs-12 mt-4">
+        <p style="font-size: 120%;"><b>Firstname:</b>&emsp;{{firstname.value}}</p>
+        <p style="font-size: 120%;"><b>Lastname:</b>&emsp;{{lastname.value}}</p>
+        <p style="font-size: 120%;"><b>Gender:</b>&emsp;{{gender.value}}</p>
+      </div>
+    </div>
+  </div>
+</div>
