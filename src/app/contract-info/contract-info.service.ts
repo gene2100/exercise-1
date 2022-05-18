@@ -2,17 +2,27 @@ import { contract } from "./contract-info.model";
 
 export class contractInfoService{
 
-  private contractList: contract[] = [
+  private testContractList: contract[] = [
     new contract('Chatrin','Sutjitjul','Male','Template Driven Form'),
-    new contract('Genelnw','Minecraft','Male','Reactive Form')
   ]
 
+  constructor(){
+    if(sessionStorage.getItem('contract') === null){
+      sessionStorage.setItem('contract', JSON.stringify(this.testContractList))
+    }
+  }
+
   getContract(){
-    return this.contractList.slice();
+    let contractList: contract[] = []
+    contractList = JSON.parse(sessionStorage.getItem('contract'))
+    return contractList;
   }
 
   addContract(contract: contract){
-    this.contractList.push(contract);
+    let contractList: contract[] = []
+    contractList = JSON.parse(sessionStorage.getItem('contract'))
+    contractList.push(contract);
+    sessionStorage.setItem('contract', JSON.stringify(contractList))
   }
 
 }
